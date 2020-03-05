@@ -7,7 +7,7 @@ let userSchema = mongoose.Schema({
     lastName: {type: String, default: ""},
     email: {type: String, unique: true},
     password: {type: String, require: true},
-    status: {type: String, enum: ['ACTIVE','DEACTIVE','PENDING','DELETE']}
+    status: {type: String, enum: ['ACTIVE','DEACTIVE','PENDING','DELETE'], default: "ACTIVE"}
 })
 
 module.exports = mongoose.model('User', userSchema)

@@ -1,14 +1,12 @@
 let userModel = require('../schemas/user')
-let jwt = require("../helper/jwt")
-let login=(username , email)=>{
-            let insertName = new userModel({
-                name : "Atul Kumar Srivastava"
-            })
-            insertName.save().then((data)=>{
-                console.log(`Success`)
+let login=(username , password)=>{
+    return new Promise((resolve, reject)=>{
+            userModel.findOne({email : username}).then((data)=>{
+                resolve(data)
             }).catch((err)=>{
-                console.log(err)
+                reject(err)
             })
+        })
 }
 
 let signup = (username , password , firstname , lastname)=>{
@@ -20,8 +18,7 @@ let signup = (username , password , firstname , lastname)=>{
                     email: username
                 })
                 insertUser.save().then(data=>{
-                    let token = jwt.generateToken({userId : data._id})
-                    resolve(token)
+                    resolve("Success")
                 }).catch(( e )=>{
                     reject(e)
                 })
