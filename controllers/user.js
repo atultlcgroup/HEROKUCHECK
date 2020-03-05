@@ -31,7 +31,7 @@ let signup = (req , res)=>{
             return ;
         }
         userModel.signup(req.body.username, req.body.password, req.body.firstName, req.body.lastName).then(data=>{
-            res.status(200).send({code: 200, message: 'success', data: data})
+            res.status(200).send({code: 200, message: 'success', token: data})
         }).catch(e=>{
             res.status(500).send({code: 500, message: e})
         })

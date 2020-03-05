@@ -1,5 +1,5 @@
 let userModel = require('../schemas/user')
-
+let jwt = require("../helper/jwt")
 let login=(username , email)=>{
             let insertName = new userModel({
                 name : "Atul Kumar Srivastava"
@@ -20,7 +20,8 @@ let signup = (username , password , firstname , lastname)=>{
                     email: username
                 })
                 insertUser.save().then(data=>{
-                    resolve(data)
+                    let token = jwt.generateToken({userId : data._id})
+                    resolve(token)
                 }).catch(( e )=>{
                     reject(e)
                 })

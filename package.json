@@ -20,6 +20,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "helmet": "^3.21.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.3",
     "nodemon": "^2.0.2",
     "pg": "^7.18.2"
