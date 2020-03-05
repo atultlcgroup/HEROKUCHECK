@@ -8,7 +8,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "dev": "set NODE_ENV=development&&nodemon index.js",
+    "micro": "set NODE_ENV=microtest&&nodemon index.js",
+    "prod": "set NODE_ENV=production&&nodemon index.js"
   },
   "dependencies": {
     "addons": "^0.1.2",
