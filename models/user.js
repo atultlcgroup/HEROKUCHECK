@@ -61,8 +61,6 @@ let updatePassword = (userId , oldPassword , newPassword)=>{
         }).catch(err=>{
             reject(err)
         })
-    }).catch((err)=>{
-        reject(err)
     })
 }
 
