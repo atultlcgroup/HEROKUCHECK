@@ -5,14 +5,18 @@ let userRoute = require("./routers/user")
 let body_praser = require("body-parser")
 let helmet = require('helmet')
 let db = require("./databases/db")
+let auth = require("./auth/authenticate")
 let app = express();
 app.use(cors())
 app.use(helmet())
 app.use(body_praser())
+app.use("/api" , auth)
 let port = process.env.PORT ||  config.PORT;
 app.use("/user" ,userRoute)
+app.use("/api/user" ,userRoute)
+
 app.use("/", (req , res)=>{
-  res.status(200).send(`SERVER started AT ${port} and This cors is enable for this api`)
+  res.status(200).send(`SERVER started AT ${port}`)
 })
 app.listen(port , ()=>{
   //console.log(process.env.NODE_ENV)
