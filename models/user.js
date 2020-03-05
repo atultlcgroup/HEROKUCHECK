@@ -51,7 +51,7 @@ let updatePassword = (userId , oldPassword , newPassword)=>{
     return new Promise((resolve , reject)=>{
         userModel.findOne({_id : userId , password : oldPassword},['_id']).then(data=>{
             if(!data){
-                reject("Invalid User")
+                reject("Invalid Password")
             }
             userModel.updateOne({_id : userId} , {$set : {password: newPassword}}).then(data=>{
                 resolve(data)
