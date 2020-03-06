@@ -20,6 +20,7 @@ let getUserProfile = (req , res)=>{
 
 let login = (req , res)=>{
     try{
+        console.log(req.body)
         if(!req.body.username || !req.body.password){
             res.status(401).json({code : 401 , message : `Invalid Inputs`})
             return ;
