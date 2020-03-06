@@ -7,7 +7,7 @@ let helmet = require('helmet')
 let db = require("./databases/db")
 let auth = require("./auth/authenticate")
 let chatRoute = require('./routers/chat')
-let pool = require('./databases/pg')
+let pool = require('./databases/pg').pool
 let app = express();
 app.use(cors())
 app.use(helmet())
