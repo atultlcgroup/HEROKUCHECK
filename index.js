@@ -28,8 +28,8 @@ app.use('/db', async (req, res) => {
 
     const result = await client.query('SELECT * FROM heroku_check');
     const results = { 'results': (result) ? result.rows : null};
-    res.render('pages/db', results );
-    client.release();
+    console.log(results)
+    res.status(200).send(JSON.stringify(results))
 
   } catch (err) {
     console.error(err);
