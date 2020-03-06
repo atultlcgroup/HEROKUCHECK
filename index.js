@@ -23,8 +23,8 @@ app.use("/api/chat" ,chatRoute)
 app.use('/db', async (req, res) => {
   try {
     const client = await pool.connect()
-    const result1 = await client.query('create table heroku_check (id integer, name text)');
-    const result2 = await client.query("insert into heroku_check values (1, 'hello database')");
+    // const result1 = await client.query('create table heroku_check (id integer, name text)');
+    // const result2 = await client.query("insert into heroku_check values (1, 'hello database')");
 
     const result = await client.query('SELECT * FROM heroku_check');
     const results = { 'results': (result) ? result.rows : null};
