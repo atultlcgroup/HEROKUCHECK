@@ -20,7 +20,7 @@ app.use("/api/chat" ,chatRoute)
 
 
 
-app.get('/db', async (req, res) => {
+app.use('/db', async (req, res) => {
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM test_table');
