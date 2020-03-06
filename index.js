@@ -27,6 +27,7 @@ app.use('/db', async (req, res) => {
     const results = { 'results': (result) ? result.rows : null};
     res.render('pages/db', results );
     client.release();
+    
   } catch (err) {
     console.error(err);
     res.send("Error " + err);
