@@ -6,6 +6,7 @@ let body_praser = require("body-parser")
 let helmet = require('helmet')
 let db = require("./databases/db")
 let auth = require("./auth/authenticate")
+let chatRoute = require('./routers/chat')
 let app = express();
 app.use(cors())
 app.use(helmet())
@@ -14,6 +15,7 @@ app.use("/api" , auth)
 let port = process.env.PORT ||  config.PORT;
 app.use("/user" ,userRoute)
 app.use("/api/user" ,userRoute)
+app.use("/api/chat" ,chatRoute)
 
 app.use("/", (req , res)=>{
   res.status(200).send(`SERVER started AT ${port}`)

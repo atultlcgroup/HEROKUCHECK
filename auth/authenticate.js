@@ -1,7 +1,6 @@
 let jwt= require("../helper/jwt")
 let userModel = require("../models/user")
 module.exports=(req,res,next)=>{
-    
     if(!req.headers['x-access-token']){
         res.status(401).send("Please Provide Token!!")
         return;
