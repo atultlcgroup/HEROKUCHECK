@@ -8,7 +8,9 @@ let getAccounts = ()=>{
             const results = { 'results': (result) ? result.rows : null};
             console.log(results)
             JSON.stringify(results)
-            resolve(results)
+            results?
+            resolve(results[0]):
+            resolve([])
         }catch( e ){
             reject(e)
         }
