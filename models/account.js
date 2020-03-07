@@ -20,7 +20,7 @@ let createAccount = (name , phone , accountnumber)=>{
       try{
 
           const client = await pool.connect()            
-          const result = await client.query(`insert into salesforce.account(name, phone, accountnumber) values(${name} , ${phone} , ${accountnumber})`);
+          const result = await client.query(`insert into salesforce.account(name, phone, accountnumber) values('${name}' , '${phone}' , '${accountnumber}')`);
           resolve(JSON.stringify(result));
       }catch( e ){
           reject(e)
@@ -31,7 +31,7 @@ let updateAccount = (id , name )=>{
     return new Promise(async(resolve , reject)=>{
       try{
           const client = await pool.connect()            
-          const result = await client.query(`update salesforce.account set name = ${name} where id = ${id}`);
+          const result = await client.query(`update salesforce.account set name = '${name}' where id = ${id}`);
           resolve(JSON.stringify(result));
       }catch( e ){
           reject(e)
