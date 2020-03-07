@@ -43,7 +43,7 @@ let deleteAccount = (id)=>{
       try{
           const client = await pool.connect()            
           const result = await client.query(`delete from salesforce.account where id = ${id}`);
-          resolve(result);
+          resolve(JSON.stringify(result));
       }catch( e ){
           reject(e)
       }
