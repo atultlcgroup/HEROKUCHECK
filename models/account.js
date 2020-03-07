@@ -38,11 +38,11 @@ let updateAccount = (id , name )=>{
       }
     })
 }
-let deleteAccount = ()=>{
+let deleteAccount = (id)=>{
     return new Promise(async(resolve , reject)=>{
       try{
           const client = await pool.connect()            
-          const result = await client.query('select * from salesforce.account');
+          const result = await client.query(`delete from salesforce.account where id = ${id}`);
           const results = { 'results': (result) ? result.rows : null};
           resolve(results);
       }catch( e ){

@@ -46,7 +46,11 @@ let updateAccount=(req,res)=>{
 
 let deleteAccount=(req,res)=>{
     try{
-        accountModel.deleteAccount().then(data=>{
+        if(!req.params.id){
+            res.status(401).send({code : 401 ,message: "Inpalid Inputs"})
+            return;
+        }
+        accountModel.deleteAccount(req.params.id).then(data=>{
             res.status(200).send({code : 200 , message : "Succcess" , data : data.results})
         }).catch(err=>{
             res.status(500).send({code : 500 , message : err})
