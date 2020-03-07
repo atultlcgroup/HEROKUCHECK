@@ -6,7 +6,7 @@ let getAccounts = ()=>{
             const client = await pool.connect()            
             const result = await client.query('select * from salesforce.account');
             const results = { 'results': (result) ? result.rows : null};
-            resolve("Success");
+            resolve(results);
         }catch( e ){
             reject(e)
         }
