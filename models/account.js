@@ -27,13 +27,12 @@ let createAccount = (name , phone , accountnumber)=>{
       }
     })
 }
-let updateAccount = ()=>{
+let updateAccount = (id , name )=>{
     return new Promise(async(resolve , reject)=>{
       try{
           const client = await pool.connect()            
-          const result = await client.query('select * from salesforce.account');
-          const results = { 'results': (result) ? result.rows : null};
-          resolve(results);
+          const result = await client.query(`update salesforce.account set name = ${name} where id = ${id}`);
+          resolve(JSON.stringify(result));
       }catch( e ){
           reject(e)
       }

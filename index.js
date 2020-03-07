@@ -19,9 +19,9 @@ app.use("/api/user" ,userRoute)
 app.use("/api/chat" ,chatRoute)
 
 app.use("/accounts",accountRouting)
-app.use("/", (req , res)=>{
-  res.status(200).send(`SERVER started AT ${port}`)
-})
+// app.use("/", (req , res)=>{
+//   res.status(200).send(`SERVER started AT ${port}`)
+// })
 app.listen(port , ()=>{
   //console.log(process.env.NODE_ENV)
     console.log( `SERVER started AT ${port}`)
