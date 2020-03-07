@@ -1,4 +1,4 @@
-let pg = require("../databases/pg").pool
+let pool = require("../databases/pg").pool
 
 let getAccounts = ()=>{
       return new Promise(async(resolve , reject)=>{

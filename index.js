@@ -5,7 +5,7 @@ let userRoute = require("./routers/user")
 let body_praser = require("body-parser")
 let helmet = require('helmet')
 // let db = require("./databases/db")
-let pg = require("./databases/pg").pool
+let pool = require("./databases/pg").pool
 
 let auth = require("./auth/authenticate")
 let chatRoute = require('./routers/chat')
