@@ -26,10 +26,10 @@ app.use('/db', async (req, res) => {
     // const result1 = await client.query('create table heroku_check (id integer, name text)');
     // const result2 = await client.query("insert into heroku_check values (1, 'hello database')");
 
-    const result = await client.query('show tables');
+    const result = await client.query('SELECT * FROM heroku_check');
     const results = { 'results': (result) ? result.rows : null};
     console.log(results)
-    res.status(200).json(JSON.stringify(results))
+    res.status(200).send(JSON.stringify(results))
 
   } catch (err) {
     console.error(err);
