@@ -24,7 +24,7 @@ app.use("/accounts",accountRouting)
 logger.info(`index.js file called.`)
 
 app.use("/SERVERPORT" , (req, res)=>{
-    res.status(200).send(`SERVER STARTED AT ${port}`)
+    res.status(200).send(`SERVER STARTED AT ${port} and ${JSON.stringify(process.env)}`)
 })
 app.listen(port , ()=>{
   //console.log(process.env.NODE_ENV)
