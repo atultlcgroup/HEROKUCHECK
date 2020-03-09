@@ -18,7 +18,6 @@ let getAccounts = ()=>{
 let createAccount = (name , phone , accountnumber)=>{
     return new Promise(async(resolve , reject)=>{
       try{
-
           const client = await pool.connect()            
           const result = await client.query(`insert into salesforce.account(name, phone, accountnumber) values('${name}' , '${phone}' , '${accountnumber}')`);
           resolve(JSON.stringify(result));

@@ -2,6 +2,7 @@ let accountModel = require("../models/account")
 
 let getAccounts=(req,res)=>{
     try{
+        console.log("name atul")
         accountModel.getAccounts().then(data=>{
             res.status(200).send({code : 200 , message : "Succcess" , data : data.results})
         }).catch(err=>{
