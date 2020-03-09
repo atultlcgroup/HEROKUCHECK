@@ -22,8 +22,13 @@ app.use("/api/user" ,userRoute)
 app.use("/api/chat" ,chatRoute)
 app.use("/accounts",accountRouting)
 logger.info(`index.js file called.`)
+
+app.use("/SERVERPORT" , (req, res)=>{
+    res.status(200).send(`SERVER STARTED AT ${port}`)
+})
 app.listen(port , ()=>{
   //console.log(process.env.NODE_ENV)
     logger.info( `SERVER started AT ${port}`)
 })
+
 
