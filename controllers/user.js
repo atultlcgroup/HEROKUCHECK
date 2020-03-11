@@ -25,7 +25,9 @@ let login = (req , res)=>{
             res.status(401).json({code : 401 , message : `Invalid Inputs`})
             return ;
         }
+
         userModel.login(req.body.username , req.body.password).then(data=>{
+
             if(!data)
             {
                 res.status(401).send({code: 401, message: `username: ${req.body.username} does not exist.`})

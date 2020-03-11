@@ -1,8 +1,10 @@
 
 let express = require("express")
+let boardRoute = require("./routers/board")
 let config = require("./config").ENV_OBJ;
 const requestIp = require('request-ip');
 let logger = require("./logger").logger
+let db = require("./databases/db")
 let cors = require("cors")
 let userRoute = require("./routers/user")
 let body_praser = require("body-parser")
@@ -20,6 +22,7 @@ let port = process.env.PORT ||  config.PORT;
 app.use("/user" ,userRoute)
 app.use("/api/user" ,userRoute)
 app.use("/api/chat" ,chatRoute)
+app.use("/api/board",boardRoute)
 app.use("/accounts",accountRouting)
 logger.info(`index.js file called.`)
 
