@@ -1,5 +1,6 @@
 let boardModel= require("../models/board")
 let createBoard = (req , res)=>{
+    // console.log(`from create boards`)
     try{
         console.log(req.body)
         if(!req.body.name || !req.body.members){
@@ -10,7 +11,12 @@ let createBoard = (req , res)=>{
             res.status(401).json({code : 401 , message : `Please enter member(s) Array`})
             return ;         
         }
-        boardModel.createBoard(req.body.name , req.body.members , req.userId).then(data=>{
+        let lastMessage= {
+            name: "",
+            dateTime: new Date(),
+            message: "",
+        }
+        boardModel.createBoard(req.body.name , req.body.members , req.userId , lastMessage).then(data=>{
             res.status(200).send({code : 200 , message : 'success', boardId : data['_id']})
         }).catch((err)=>{
             res.status(500).send({code : 500 , message : err})
@@ -57,8 +63,15 @@ let deleteBoard=(req , res)=>{
         res.status(500).json({code : 500 , message : e})
     }
 }
+
+
+let checkDouble=(req , res)=>{
+    console.log(`from check double`)
+    res.status(500).json({code : 500 , message : "kslas"})
+}
 module.exports= {
     createBoard,
     getBoards,
-    deleteBoard
+    deleteBoard,
+    checkDouble
 }

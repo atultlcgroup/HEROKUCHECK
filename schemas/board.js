@@ -4,6 +4,7 @@ let boardSchema  = mongoose.Schema({
     pic: {type: String, default: ""},
     members: {type: []},
     owner: {type: String, require: true},
-    status: {type: String, enum: ['ACTIVE','DEACTIVE','DELETE'], default: "ACTIVE"}
+    status: {type: String, enum: ['ACTIVE','DEACTIVE','DELETE'], default: "ACTIVE"},
+    lastMessage : { type : Object() ,default: ""}
 })
 module.exports = mongoose.model('Board', boardSchema)

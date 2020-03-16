@@ -1,11 +1,12 @@
 let boardSchema = require("../schemas/board")
-let createBoard= (name , members , owner)=>{
+let createBoard= (name , members , owner,lastMessage)=>{
     return new Promise((resolve , reject )=>{
             try{
                 let boardModel = new boardSchema({
                     name: name,
                     members: members,
-                    owner: owner
+                    owner: owner,
+                    lastMessage: lastMessage
                 })
                     boardModel.save().then(data=>{
                         resolve(data)
@@ -23,7 +24,7 @@ let getBoards= (userId)=>{
     return new Promise((resolve , reject)=>{
         try{
             console.log(userId)
-            boardSchema.find({ $or :[{members: userId }, {owner: userId}]}).select(["name" , "pic" , "owner","members"]).then(data=>{
+            boardSchema.find({ $or :[{members: userId }, {owner: userId}]}).select(["name" , "pic" , "owner","members","lastMessage"]).then(data=>{
                 resolve(data)
             }).catch(err=>{
                 reject(err)
