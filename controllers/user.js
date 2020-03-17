@@ -1,5 +1,19 @@
 let userModel = require("../models/user")
+let multer = require("multer")
 let jwt = require("../helper/jwt")
+
+
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+  let upload = multer({ storage: storage })
+
 
 let getUserProfile = (req , res)=>{
     try{
@@ -42,7 +56,7 @@ let login = (req , res)=>{
                 return ;
             }
             let token = jwt.generateToken({userId : data._id})
-            res.status(200).send({code : 200 , message : 'success', data : token})
+            res.status(200).send({code : 200 , message : 'SUCCESS', data : token})
         }).catch((err)=>{
             res.status(500).send({code : 500 , message : err})
         })
@@ -102,6 +116,21 @@ let updateProfile = (req , res)=>{
 }
 
 
+let updateProfilePhoto = (req ,res)=>{
+    try{
+        console.log(req.file)
+        if(!req.file){
+            res.status(401).send({code : 401 , message: "Invalid Inputs!!"});
+            return;
+        }
+        upload.single('image');
+        res.status(200).send({code: 200, message: 'success'})
+    }catch(e){
+        res.status(500).json({code : 500 , message : e})
+    }
+}
+
+
 
 
 module.exports={
@@ -109,5 +138,6 @@ module.exports={
     login,
     signup,
     updatePassword,
-    updateProfile
+    updateProfile,
+    updateProfilePhoto
 }

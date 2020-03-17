@@ -6,6 +6,8 @@ Router.post("/login" , userController.login)
 Router.post("/signup" , userController.signup)
 Router.put("/updatePassword" , userController.updatePassword)
 Router.put("/updateProfile" , userController.updateProfile)
+Router.put("/updateProfilePhoto" , userController.updateProfilePhoto)
+
 
 
 
